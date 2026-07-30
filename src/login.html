@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="login.css">
+        <script src="login.js" type="text/javascript"></script>
         <title>TomOS</title>
     </head>
     <body>
@@ -14,14 +15,33 @@
             </div>
             <div id="login_gradient"></div>
             <div id="login_input_container"> 
-                <label for="username">Username:</label>
-                <input id="username" class="input_field" name="username" type="text">
-                <label for="password">Password:</label>
-                <input id="password" class="input_field" name="password" type="text">
-                <div id="options">
-                    <button type="button">OK</button>
-                    <button type="button">Cancel</button>
-                    <button type="button">Shutdown...</button>
+                <label class="input_label" for="username">Username:</label>
+                <div class="input_field_border">
+                    <input id="username" class="input_field" name="username" type="text">
+                </div>
+                <label class="input_label" for="password">Password:</label>
+                <div class="input_field_border">
+                    <input id="password" class="input_field" name="password" type="password">
+                </div>
+                <div id="dial_up_container">
+                    <input type="checkbox" id="dial_up" name="dial_up" checked>
+                    <label for="dial_up">Log on using dial-up connection</label>
+                </div>
+                <div id="options_container">
+                    <div class="solid_button_border">
+                        <div class="button_border"> 
+                            <button type="button" onmousedown="show_active_border(event, this)" onmouseup="revert_border(event, this)">OK</button>
+                        </div>
+                    </div>
+                    <div class="button_border">
+                        <button type="button" onmousedown="show_active_border(event, this)" onmouseup="revert_border(event, this)">Cancel</button>
+                    </div>
+                    <div class="button_border">
+                        <button type="button" onmousedown="show_active_border(event, this)" onmouseup="revert_border(event, this)">Shutdown...</button>
+                    </div>
+                    <div class="button_border">
+                        <button type="button" onmousedown="show_active_border(event, this)" onmouseup="revert_border(event, this)">Options << </button> 
+                    </div>
                 </div>
             </div>
         </form>
