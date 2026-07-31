@@ -33,7 +33,7 @@ body {
     border-style: solid;
     
     width: 500px;
-    height: 300px;
+    height: 350px;
     top: 0; 
     bottom: 0;
     left: 0;
@@ -58,7 +58,16 @@ body {
 } 
 
 #login_logo {
-    height: 100px
+    height: 150px;
+}
+
+#logo_img {
+
+    width: 300px;
+    height: 150px;
+
+    display: block;
+    margin: 0 auto;
 }
 
 #login_gradient {
