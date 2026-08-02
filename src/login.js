@@ -110,9 +110,17 @@ function shutdown(event, outer_button_div){
 
 function show_dial_up_option(event, outer_button_div){ 
     revert_active_button(event, outer_button_div)
+
+    let button_text = outer_button_div.children[0].children[0]
+    
+    
     let dial_up_option = document.getElementById("dial_up_container"); 
     if (dial_up_option.style.display === "none" || dial_up_option.style.display === ""){
         dial_up_option.style.display = "flex";  
+        button_text.textContent = "Options <<";
     }  
-    else dial_up_option.style.display = "none";
+    else {
+        dial_up_option.style.display = "none";
+        button_text.textContent = "Options >>";       
+    }
 }
