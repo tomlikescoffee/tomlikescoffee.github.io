@@ -9,6 +9,9 @@ const MouseButtons = Object.freeze({
 const OPTION_BUTTONS = Array.from(document.getElementById("options_container").children) 
 var active_button_index = 0 
 
+// Plaintext password -> if this not a website for fun this would be very very bad 
+var plaintext_password = ""
+
 // Remove highlighting effect from previously active button
 function reset_previous_active_button(outer_button_div){
     let inner_button_div = outer_button_div.children[0]
@@ -86,7 +89,6 @@ function revert_active_button(event, outer_button_div) {
     inner_div_classes = inner_button_div.classList
     button_text_classes = button_text.classList 
     
-
     if (! outer_div_classes.contains("button_active_highlight")){
         outer_div_classes.add("button_active_highlight")
     }
@@ -108,19 +110,77 @@ function shutdown(event, outer_button_div){
     window.location.href = "https://www.google.com/";
 }
 
-function show_dial_up_option(event, outer_button_div){ 
+// Show/hide dial up connection option
+function toggle_dial_up_option(event, outer_button_div){ 
     revert_active_button(event, outer_button_div)
 
-    let button_text = outer_button_div.children[0].children[0]
-    
+    let options_button_text = document.getElementById("options_button");
     
     let dial_up_option = document.getElementById("dial_up_container"); 
     if (dial_up_option.style.display === "none" || dial_up_option.style.display === ""){
         dial_up_option.style.display = "flex";  
-        button_text.textContent = "Options <<";
+        options_button_text.textContent = "Options <<";
     }  
     else {
         dial_up_option.style.display = "none";
-        button_text.textContent = "Options >>";       
+        options_button_text.textContent = "Options >>";       
     }
+}
+
+// Moves cursor to specified position inside the passed input element
+function adjustCursor(input_element, mouse_position){
+    // Reset mouse cursor instead of jumping to end
+    requestAnimationFrame(() => {
+        input_element.setSelectionRange(mouse_position, mouse_position);
+    });
+}
+
+// If user is entering 
+function override_cursor_movement(){
+    let username_field = document.getElementById("username")
+    adjustCursor(username_field, username_field.selectionStart)
+}
+
+// Simple override to obscure password with asterisks (*)
+function obscure_plaintext(){
+    let password_field = document.getElementById("password")
+    let password = password_field.value 
+
+    // Store mouse position -> used to determine where string was added/deleted 
+    let mouse_position = password_field.selectionStart;
+
+    if (password.length > plaintext_password.length) {
+        let new_password_char = password[mouse_position - 1];        
+        plaintext_password = plaintext_password.slice(0, mouse_position - 1) + new_password_char + plaintext_password.slice(mouse_position - 1) 
+    }
+    else if(password.length < plaintext_password.length) {
+        plaintext_password = plaintext_password.slice(0, mouse_position) + plaintext_password.slice(mouse_position + 1) 
+    }
+
+    let obscured_password = "*".repeat(password.length)
+    password_field.value = obscured_password
+
+    if(password.length === 0){ 
+        document.getElementById("cancel_login").classList.add("disabled_button_text")
+    }
+    else {
+        document.getElementById("cancel_login").classList.remove("disabled_button_text")
+    }
+
+    // Keep cursor in same position
+    adjustCursor(password_field, mouse_position)
+}
+
+// Clear input fields
+function cancel_login(event, outer_button_div) {
+    if(document.getElementById("cancel_login").classList.contains("disabled_button_text")) return;
+    revert_active_button(event, outer_button_div)
+    
+    // Clear input fields and stored password
+    plaintext_password = ""
+    document.getElementById("username").value = ""
+    document.getElementById("password").value = ""
+    
+    // 'Disable' button
+    document.getElementById("cancel_login").classList.add("disabled_button_text")
 }

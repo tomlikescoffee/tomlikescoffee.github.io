@@ -19,11 +19,11 @@
                 <div id="login_input_container"> 
                     <label class="input_label" for="username">Username:</label>
                     <div class="input_field_border">
-                        <input id="username" class="input_field" name="username" type="text">
+                        <input id="username" class="input_field" name="username" type="text" oninput="override_cursor_movement()">
                     </div>
                     <label class="input_label" for="password">Password:</label>
                     <div class="input_field_border">
-                        <input id="password" class="input_field" name="password" type="password">
+                        <input id="password" class="input_field" name="password" type="text" oninput="obscure_plaintext()">
                     </div>
                     <div id="dial_up_container">
                         <input type="checkbox" id="dial_up" name="dial_up">
@@ -37,9 +37,9 @@
                                 <p class="button_text inner_button_border">OK</p>
                             </div>
                         </div>
-                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="revert_active_button(event, this)" onmouseleave="revert_active_button(event, this)">
+                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="cancel_login(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="inner_button_border">
-                                <p class="button_text disabled_button_text">Cancel</p>
+                                <p id="cancel_login" class="button_text disabled_button_text">Cancel</p>
                             </div>
                         </div>
                         <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="shutdown(event, this)" onmouseleave="revert_active_button(event, this)">
@@ -47,9 +47,9 @@
                                 <p class="button_text">Shutdown...</p>
                             </div> 
                         </div>
-                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="show_dial_up_option(event, this)" onmouseleave="revert_active_button(event, this)">
+                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="toggle_dial_up_option(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="inner_button_border">
-                                <p class="button_text">Options >></p>
+                                <p id="options_button" class="button_text">Options >></p>
                             </div>
                         </div>
                     </div>
