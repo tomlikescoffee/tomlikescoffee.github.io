@@ -16,7 +16,6 @@
                     <img src="../assets/images/tomOS_excited_logo.PNG" id="logo_img">
                 </div>
                 <div id="login_gradient"></div>
-                
                 <div id="login_input_container"> 
                     <label class="input_label" for="username">Username:</label>
                     <div class="input_field_border">
@@ -27,41 +26,33 @@
                         <input id="password" class="input_field" name="password" type="password">
                     </div>
                     <div id="dial_up_container">
-                        <input type="checkbox" id="dial_up" name="dial_up" checked>
+                        <input type="checkbox" id="dial_up" name="dial_up">
                         <label for="dial_up">Log on using dial-up connection</label>
                     </div>
-                    
+                   
+                    <!-- I'm so sorry for the sheer number of nested divs :( -->
                     <div id="options_container">
                         <div class="button button_active_highlight" onmousedown="mark_active_button(event, this)" onmouseup="revert_active_button(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="outer_button_border"> 
                                 <p class="button_text inner_button_border">OK</p>
                             </div>
                         </div>
-                        
                         <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="revert_active_button(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="inner_button_border">
-                                <p class="button_text">Cancel</p>
+                                <p class="button_text disabled_button_text">Cancel</p>
                             </div>
                         </div>
-
-                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="revert_active_button(event, this)" onmouseleave="revert_active_button(event, this)">
+                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="shutdown(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="inner_button_border">
                                 <p class="button_text">Shutdown...</p>
                             </div> 
                         </div>
-
-                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="revert_active_button(event, this)" onmouseleave="revert_active_button(event, this)">
+                        <div class="button outer_button_border" onmousedown="mark_active_button(event, this)" onmouseup="show_dial_up_option(event, this)" onmouseleave="revert_active_button(event, this)">
                             <div class="inner_button_border">
                                 <p class="button_text">Options <<</p>
                             </div>
                         </div>
-                    
-                    
                     </div>
-                
-                
-                
-            
                 </div>
             </form> 
         </div>

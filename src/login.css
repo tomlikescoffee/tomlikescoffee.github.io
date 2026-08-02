@@ -10,6 +10,7 @@
     font-size: 8px;
 }
 
+/* Disable highlighting */
 .no_select {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -19,7 +20,6 @@
     user-select: none; /* Non-prefixed version, currently
                             supported by Chrome, Edge, Opera and Firefox */
 }
-
 
 body {
   /* background-color:#3B6EA5; */
@@ -170,10 +170,9 @@ body {
 }
 
 #dial_up_container {
-
+    display: none;
     grid-column: 2;
     box-sizing: border-box;
-    display: flex;
     align-items: center;
 }
 
@@ -207,7 +206,6 @@ body {
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); 
 }
-
 
 #dial_up_container input[type="checkbox"]:checked::before {
     transform: scale(1);
@@ -296,13 +294,17 @@ body {
     border-right: rgb(79, 79, 79) 1px solid; 
 }
 
-
 .button_text { 
+    color: black;
     border: lightgray 1px solid;
-
     white-space: nowrap;
     margin: 0;
     padding: 5px;
     box-sizing: border-box;
     text-align: center;
+}
+
+.disabled_button_text {
+    color: darkgray;
+    text-shadow: 1px 1px white;
 }
