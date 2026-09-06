@@ -1,0 +1,141 @@
+#crt {
+    left: 0;
+    right: 0;
+    margin: auto;
+
+
+    width: fit-content;
+    height: fit-content;
+}
+
+#crt_monitor {    
+    /* top: 0; 
+    bottom: 0; */
+
+    position: relative;
+
+    border-top: beige;
+    border-left: beige;
+    border-bottom: beige;
+    border-right: beige; 
+    border-width: 75px;
+    border-style: solid;
+
+    width: fit-content;
+    height: fit-content;
+}
+
+#crt_inner_border { 
+    position: relative;
+
+    border-top: darkgray;
+    border-left: darkgray;
+    border-bottom: lightgray;
+    border-right: lightgray; 
+    border-width: 10px;
+    border-style: solid;
+
+    width: fit-content;
+    height: fit-content;
+}
+
+#crt_screen {  
+    position: relative;
+
+    width: 800px;
+    height: 600px;
+    color: black;
+    background-color: black;
+}
+
+#crt_under {
+    width: 800px;
+    height: 50px;
+    background: beige;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    /* box-shadow:
+        inset 0 8px 10px rgba(0, 0, 0, 0.35),
+        inset 0 -5px 8px rgba(255, 255, 255, 0.25); */
+}
+
+#crt_under::before {
+    content: "";
+    position: absolute;
+
+    width: 800px;
+    height: 30px;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        beige
+    );
+
+    pointer-events: none;
+}
+
+#crt_stand {
+    position: relative;
+    
+    display: flex;
+    justify-content: center;
+}
+
+#crt_circle {
+    position: absolute;
+
+    height: 3rem;
+    width: 500px;
+    border-radius: 5rem;
+    background-color: beige;
+
+    border-radius: 0 0 50% 50%/0 0 100% 100%;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: inset 0 0 75px rgba(0, 0, 0, 0.3); */
+}
+
+#crt_base {
+    width: 600px;
+    height: 75px;
+    background: beige;
+    
+    margin: 0 auto;    
+    box-sizing: border-box;
+    z-index: -1;
+
+    position: absolute;
+/* 
+    box-shadow: inset 0px 80px 50px rgb(0, 0, 0.1)
+                /* inset 0 66px 15px 0px #323232,
+                inset 0 99px 5px 0px #7e7d7d; */ 
+}
+
+#crt_base::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(
+        ellipse at center top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0) 70%
+    );
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        beige
+    );
+}
