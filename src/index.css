@@ -1,9 +1,13 @@
+@keyframes blinkGreen {
+    from { background-color: #ABFF00; }
+    50% { box-shadow: 0 0 7px 1px rgba(171, 255, 0, 0.5), inset 0 0 5px #ABFF00; }
+    to { background-color: #ABFF00; }
+}
+
 #crt {
     left: 0;
     right: 0;
     margin: auto;
-
-
     width: fit-content;
     height: fit-content;
 }
@@ -47,8 +51,8 @@
 
 #crt_power {
     position: absolute;
-    bottom: 0;
-    right: 10%; 
+    bottom: 10px;
+    right: 10%;
 
     display: grid;
     grid-template-columns: auto auto; 
@@ -61,10 +65,7 @@
     width: 50px;
     height: 50px;
 
-    border-top: 2px black solid;
-    border-left: 2px black solid;
-    border-right: 2px black solid; 
-
+    border: 4px black solid;
 }  
 
 #status_light_outer {
@@ -74,15 +75,18 @@
 
     background-color: black;
     border-radius: 50%;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
 }
 
 #status_light_inner {
-    background-color: lightgreen;
-    height: 16px;
-    width: 16px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
+    background-color: #ABFF00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+
+    animation: blinkGreen 1s infinite;
 }
 
 #crt_under {
